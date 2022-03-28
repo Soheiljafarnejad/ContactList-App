@@ -5,14 +5,12 @@ import "./App.css";
 import ContactList from "./Components/ContactList/ContactList";
 const App = () => {
   const [contact, setContact] = useState([]);
-  console.log(contact);
-
   return (
     <>
       <HeaderCom />
       <main className="main">
         <FormContact contact={contact} setContact={setContact} />
-        <ContactList />
+        <ContactList contact={contact} />
       </main>
     </>
   );

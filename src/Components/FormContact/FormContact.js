@@ -1,10 +1,10 @@
 import { useState } from "react";
 import style from "./FormContact.module.css";
 const FormContact = ({ contact, setContact }) => {
-  const [value, setValue] = useState({ name: "", email: "" });
+  const [value, setValue] = useState({ name: "", email: "", id: null });
 
   const changeHandler = (e) => {
-    setValue({ ...value, [e.target.id]: e.target.value });
+    setValue({ ...value, [e.target.id]: e.target.value, id: Date.now() });
   };
 
   const submitHandler = (e) => {
