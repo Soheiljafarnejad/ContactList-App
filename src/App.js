@@ -5,12 +5,16 @@ import "./App.css";
 import ContactList from "./Components/ContactList/ContactList";
 const App = () => {
   const [contact, setContact] = useState([]);
+  const deleteHandler = (id) => {
+    const selectedItem = contact.filter((item) => item.id !== id);
+    setContact(selectedItem);
+  };
   return (
     <>
       <HeaderCom />
       <main className="main">
         <FormContact contact={contact} setContact={setContact} />
-        <ContactList contact={contact} />
+        <ContactList contact={contact} onDelete={deleteHandler} />
       </main>
     </>
   );

@@ -2,7 +2,7 @@ import style from "./Contact.module.css";
 import contactImg from "./img/contact.png";
 import { BiTrash } from "react-icons/bi";
 
-const Contact = ({ title, email }) => {
+const Contact = ({ title, email, onDelete }) => {
   return (
     <div className={style.contact}>
       <div className={style.description}>
@@ -12,7 +12,7 @@ const Contact = ({ title, email }) => {
           <p>{email}</p>
         </div>
       </div>
-      <button>
+      <button onClick={onDelete}>
         <BiTrash />
       </button>
     </div>
