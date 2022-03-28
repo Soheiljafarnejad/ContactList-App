@@ -1,6 +1,8 @@
 .form {
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 2px -2px rgb(241, 241, 241);
+  padding-bottom: 1rem;
 }
 
 .form input {
@@ -17,6 +19,8 @@
 .form label {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+  font-weight: 700;
+  font-size: 1.8rem;
 }
 
 .form button {
