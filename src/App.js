@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FormContact from "./Components/FormContact/FormContact";
 import HeaderCom from "./Components/Header/HeaderCom";
 import "./App.css";
@@ -14,6 +14,15 @@ const App = () => {
   const addContactHandler = (value) => {
     setContact([...contact, value]);
   };
+
+  useEffect(() => {
+    const allContact = JSON.parse(localStorage.getItem("contact"));
+    if (allContact) setContact(allContact);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("contact", JSON.stringify(contact));
+  }, [contact]);
 
   return (
     <>
