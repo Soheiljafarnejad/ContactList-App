@@ -1,6 +1,6 @@
 import { useState } from "react";
 import style from "./FormContact.module.css";
-const FormContact = ({ contact, setContact }) => {
+const FormContact = ({ addContactHandler }) => {
   const [value, setValue] = useState({ name: "", email: "", id: null });
 
   const changeHandler = (e) => {
@@ -13,7 +13,7 @@ const FormContact = ({ contact, setContact }) => {
       alert("please enter value");
       return;
     }
-    setContact([...contact, value]);
+    addContactHandler(value);
     setValue({ name: "", email: "" });
   };
   return (
