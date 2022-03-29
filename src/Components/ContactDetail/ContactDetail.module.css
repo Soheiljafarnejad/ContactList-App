@@ -1,0 +1,40 @@
+.contact {
+}
+
+.table {
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid #e5e5e5;
+  border-collapse: collapse;
+  text-align: start;
+  padding: 1.5rem 1rem;
+}
+
+.th {
+  text-align: center;
+}
+
+tr:nth-child(2n) {
+  background-color: #f8f9fa;
+}
+
+.tdEdit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tdEdit button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 2rem;
+}

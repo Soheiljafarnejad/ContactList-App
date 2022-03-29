@@ -15,7 +15,9 @@ const App = () => {
   };
 
   const addContactHandler = (value) => {
-    setContact([...contact, value]);
+    const id = Date.now();
+    const date = new Date().toISOString();
+    setContact([...contact, { ...value, id, date }]);
   };
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import { BiTrash } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const Contact = ({ contact, onDelete }) => {
-  const { name, email, id } = contact;
+  const { name, email, id, phone } = contact;
   return (
     <div className={style.contact}>
       <Link state={contact} to={`/contact/${id}`}>
@@ -12,7 +12,7 @@ const Contact = ({ contact, onDelete }) => {
           <img src={contactImg} alt="contact-img" />
           <div className={style.title}>
             <h4>{name}</h4>
-            <p>{email}</p>
+            <p>{phone||email}</p>
           </div>
         </div>
       </Link>
