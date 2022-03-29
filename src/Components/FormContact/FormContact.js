@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import style from "./FormContact.module.css";
 const FormContact = ({ addContactHandler }) => {
   const [value, setValue] = useState({ name: "", email: "", id: null });
-
+  const history = useNavigate();
   const changeHandler = (e) => {
     setValue({ ...value, [e.target.id]: e.target.value, id: Date.now() });
   };
@@ -13,9 +14,10 @@ const FormContact = ({ addContactHandler }) => {
       alert("please enter value");
       return;
     }
-    
+
     addContactHandler(value);
     setValue({ name: "", email: "" });
+    history("/");
   };
   return (
     <section className="container">

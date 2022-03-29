@@ -1,5 +1,5 @@
 import Contact from "../Contact/Contact";
-
+import style from "./ContactList.module.css";
 const ContactList = ({ contact, onDelete }) => {
   if (contact.length === 0) {
     return (
@@ -9,7 +9,8 @@ const ContactList = ({ contact, onDelete }) => {
     );
   }
   return (
-    <section>
+    <section className={`container ${style.contactList}`}>
+      <h2>Contact List</h2>
       {contact.map((item) => {
         return (
           <Contact

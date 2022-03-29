@@ -1,7 +1,6 @@
 .form {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 2px -2px rgb(241, 241, 241);
   padding-bottom: 1rem;
 }
 
