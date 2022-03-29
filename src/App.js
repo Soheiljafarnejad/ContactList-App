@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FormContact from "./Components/FormContact/FormContact";
 import HeaderCom from "./Components/Header/HeaderCom";
-import "./App.css";
 import ContactList from "./Components/ContactList/ContactList";
+import "./App.css";
+
 const App = () => {
   const [contact, setContact] = useState([]);
 
@@ -26,11 +28,23 @@ const App = () => {
 
   return (
     <>
-      <HeaderCom />
-      <main className="main">
-        <FormContact addContactHandler={addContactHandler} />
-        <ContactList contact={contact} onDelete={deleteHandler} />
-      </main>
+      <BrowserRouter>
+        <HeaderCom />
+        <main className="main">
+          <Routes>
+            <Route
+              path="new-contact"
+              element={<FormContact addContactHandler={addContactHandler} />}
+            />
+            <Route
+              path="/"
+              element={
+                <ContactList contact={contact} onDelete={deleteHandler} />
+              }
+            />
+          </Routes>
+        </main>
+      </BrowserRouter>
     </>
   );
 };

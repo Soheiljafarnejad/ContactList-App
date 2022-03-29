@@ -13,6 +13,7 @@ const FormContact = ({ addContactHandler }) => {
       alert("please enter value");
       return;
     }
+    
     addContactHandler(value);
     setValue({ name: "", email: "" });
   };
