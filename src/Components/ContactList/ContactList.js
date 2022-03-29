@@ -14,8 +14,7 @@ const ContactList = ({ contact, onDelete }) => {
       {contact.map((item) => {
         return (
           <Contact
-            title={item.name}
-            email={item.email}
+            contact={item}
             key={item.id}
             onDelete={() => onDelete(item.id)}
           />

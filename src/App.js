@@ -4,6 +4,7 @@ import FormContact from "./Components/FormContact/FormContact";
 import HeaderCom from "./Components/Header/HeaderCom";
 import ContactList from "./Components/ContactList/ContactList";
 import "./App.css";
+import ContactDetail from "./Components/ContactDetail/ContactDetail";
 
 const App = () => {
   const [contact, setContact] = useState([]);
@@ -42,6 +43,7 @@ const App = () => {
                 <ContactList contact={contact} onDelete={deleteHandler} />
               }
             />
+            <Route path="/contact/:id" element={<ContactDetail />} />
           </Routes>
         </main>
       </BrowserRouter>
