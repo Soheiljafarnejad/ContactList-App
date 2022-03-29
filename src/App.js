@@ -20,6 +20,16 @@ const App = () => {
     setContact([...contact, { ...value, id, date }]);
   };
 
+  const editHandler = (id, type, value) => {
+    const index = contact.findIndex((item) => item.id === id);
+    const selectedItem = { ...contact[index] };
+    selectedItem[type] = value[type];
+    selectedItem.date = new Date().toISOString();
+    const clone = [...contact];
+    clone[index] = selectedItem;
+    setContact(clone);
+  };
+
   useEffect(() => {
     const allContact = JSON.parse(localStorage.getItem("contact"));
     if (allContact) setContact(allContact);
@@ -33,21 +43,20 @@ const App = () => {
     <>
       <BrowserRouter>
         <HeaderCom />
-        <main className="main">
-          <Routes>
-            <Route
-              path="new-contact"
-              element={<FormContact addContactHandler={addContactHandler} />}
-            />
-            <Route
-              path="/"
-              element={
-                <ContactList contact={contact} onDelete={deleteHandler} />
-              }
-            />
-            <Route path="/contact/:id" element={<ContactDetail />} />
-          </Routes>
-        </main>
+        <Routes>
+          <Route
+            path="/"
+            element={<ContactList contact={contact} onDelete={deleteHandler} />}
+          />
+          <Route
+            path="new-contact"
+            element={<FormContact addContactHandler={addContactHandler} />}
+          />
+          <Route
+            path="/contact/:id"
+            element={<ContactDetail onEdit={editHandler} />}
+          />
+        </Routes>
       </BrowserRouter>
     </>
   );
