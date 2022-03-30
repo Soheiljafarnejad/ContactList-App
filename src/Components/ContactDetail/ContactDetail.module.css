@@ -7,6 +7,28 @@
   width: 100%;
 }
 
+.title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title button {
+  color: white;
+  background-color: var(--primary-color);
+  padding: 0.75rem 1.8rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 700;
+}
+.title button:hover {
+  background-color: var(--secondary-color);
+}
+
 table,
 th,
 td {
@@ -24,42 +46,16 @@ tr:nth-child(2n) {
   background-color: #f8f9fa;
 }
 
-.tdEdit form {
+.text {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  overflow: hidden;
 }
 
-.tdEdit span {
+.text span {
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
-  width: 70vw;
-}
-
-.tdEdit button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 2rem;
-  margin-left: 1.5rem;
-}
-
-.tdEdit button p {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.tdEdit button p:hover {
-  background-color: var(--secondary-color);
+  width: 75vw;
 }
 
 @media screen and (max-width: 576px) {
@@ -68,7 +64,10 @@ tr:nth-child(2n) {
   td {
     padding: 1rem 0.5rem;
   }
-  .tdEdit span {
+  .text span {
     width: 55vw;
+  }
+  .title button {
+    padding: 0.6rem 1rem;
   }
 }

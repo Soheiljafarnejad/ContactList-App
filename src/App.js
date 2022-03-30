@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import FormContact from "./Components/FormContact/FormContact";
 import ContactList from "./Components/ContactList/ContactList";
 import "./App.css";
 import ContactDetail from "./Components/ContactDetail/ContactDetail";
 import NotFound from "./Components/NotFound/NotFound";
 import Layout from "./Components/Layout";
+import NewContact from "./Components/NewContact/NewContact";
+import EditContact from "./Components/EditContact/EditContact";
 
 const App = () => {
   const [contact, setContact] = useState([]);
@@ -22,10 +23,12 @@ const App = () => {
     setContact([...contact, { ...value, id, date }]);
   };
 
-  const editHandler = (id, type, value) => {
-    const index = contact.findIndex((item) => item.id === id);
+  const editHandler = (value) => {
+    const index = contact.findIndex((item) => item.id === value.id);
     const selectedItem = { ...contact[index] };
-    selectedItem[type] = value[type];
+    selectedItem.name = value.name;
+    selectedItem.email = value.email;
+    selectedItem.phone = value.phone;
     selectedItem.date = new Date().toISOString();
     const clone = [...contact];
     clone[index] = selectedItem;
@@ -54,11 +57,12 @@ const App = () => {
             />
             <Route
               path="new-contact"
-              element={<FormContact addContactHandler={addContactHandler} />}
+              element={<NewContact addContactHandler={addContactHandler} />}
             />
+            <Route path="/contact/:id" element={<ContactDetail />} />
             <Route
-              path="/contact/:id"
-              element={<ContactDetail onEdit={editHandler} />}
+              path="/contact/edit/:id"
+              element={<EditContact onEdit={editHandler} />}
             />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -5,7 +5,7 @@
 }
 
 .navigation ul li:not(:last-child) {
-  margin-right: 2.5rem;
+  margin-right: 2rem;
 }
 
 .navigation a {

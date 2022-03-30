@@ -1,23 +1,9 @@
-import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRef, useEffect } from "react";
 import style from "./FormContact.module.css";
 import toast from "react-hot-toast";
-const FormContact = ({ addContactHandler }) => {
+const FormContact = ({ edit, changeHandler, value, onSubmit }) => {
   const nameRef = useRef();
   const emailRef = useRef();
-
-  const [value, setValue] = useState({
-    name: "",
-    email: "",
-    phone: "",
-  });
-  const history = useNavigate();
-  const changeHandler = (e) => {
-    setValue({
-      ...value,
-      [e.target.id]: e.target.value,
-    });
-  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -31,11 +17,7 @@ const FormContact = ({ addContactHandler }) => {
       emailRef.current.focus();
       return;
     }
-
-    toast.success("Successful");
-    addContactHandler(value);
-    setValue({ name: "", email: "", phone: "" });
-    history("/");
+    onSubmit(e);
   };
 
   const checkInput = (e) => {
@@ -43,7 +25,8 @@ const FormContact = ({ addContactHandler }) => {
       !(
         (e.keyCode >= 48 && e.keyCode <= 57) ||
         (e.keyCode >= 96 && e.keyCode <= 105) ||
-        (e.keyCode === 8 || e.keyCode === 13)
+        e.keyCode === 8 ||
+        e.keyCode === 13
       )
     ) {
       toast.error("Enter Number");
@@ -57,7 +40,7 @@ const FormContact = ({ addContactHandler }) => {
 
   return (
     <section className="container">
-      <h3>Add Contact</h3>
+      <h3>{edit ? "Edit" : "Add"} Contact</h3>
 
       <form className={style.form} onSubmit={submitHandler}>
         <label htmlFor="name">Name</label>
@@ -68,8 +51,7 @@ const FormContact = ({ addContactHandler }) => {
           placeholder="Name"
           onChange={changeHandler}
           value={value.name}
-          autocomplete="off"
-
+          autoComplete="off"
         />
 
         <label htmlFor="email">Email</label>
@@ -80,8 +62,7 @@ const FormContact = ({ addContactHandler }) => {
           placeholder="Email"
           onChange={changeHandler}
           value={value.email}
-          autocomplete="off"
-
+          autoComplete="off"
         />
 
         <label htmlFor="phone">Phone</label>
@@ -94,11 +75,19 @@ const FormContact = ({ addContactHandler }) => {
           value={value.phone}
           maxLength="11"
           minLength="11"
-          autocomplete="off"
-
+          autoComplete="off"
         />
 
-        <button>Add</button>
+        <div className={style.btn}>
+          <button type="submit" value="save">
+            {edit ? "Save" : "Add"}
+          </button>
+          {edit && (
+            <button type="submit" value="cancel" className={style.cancel}>
+              Cancel
+            </button>
+          )}
+        </div>
       </form>
     </section>
   );

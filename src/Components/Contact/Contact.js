@@ -12,7 +12,7 @@ const Contact = ({ contact, onDelete }) => {
           <img src={contactImg} alt="contact-img" />
           <div className={style.title}>
             <h4>{name}</h4>
-            <p>{phone||email}</p>
+            <p>{phone ? `Tel:${phone}` : `Email:${email}`}</p>
           </div>
         </div>
       </Link>
