@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FormContact from "./Components/FormContact/FormContact";
-import HeaderCom from "./Components/Header/HeaderCom";
 import ContactList from "./Components/ContactList/ContactList";
 import "./App.css";
 import ContactDetail from "./Components/ContactDetail/ContactDetail";
 import NotFound from "./Components/NotFound/NotFound";
+import Layout from "./Components/Layout";
 
 const App = () => {
   const [contact, setContact] = useState([]);
@@ -43,22 +43,25 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <HeaderCom />
-        <Routes>
-          <Route
-            path="/"
-            element={<ContactList contact={contact} onDelete={deleteHandler} />}
-          />
-          <Route
-            path="new-contact"
-            element={<FormContact addContactHandler={addContactHandler} />}
-          />
-          <Route
-            path="/contact/:id"
-            element={<ContactDetail onEdit={editHandler} />}
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ContactList contact={contact} onDelete={deleteHandler} />
+              }
+            />
+            <Route
+              path="new-contact"
+              element={<FormContact addContactHandler={addContactHandler} />}
+            />
+            <Route
+              path="/contact/:id"
+              element={<ContactDetail onEdit={editHandler} />}
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Layout>
       </BrowserRouter>
     </>
   );

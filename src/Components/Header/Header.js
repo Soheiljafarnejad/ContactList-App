@@ -1,6 +1,6 @@
 import Navigation from "../Navigation/Navigation";
-import style from "./HeaderCom.module.css";
-const HeaderCom = () => {
+import style from "./Header.module.css";
+const Header = () => {
   return (
     <header className={style.header}>
       <Navigation />
@@ -8,4 +8,4 @@ const HeaderCom = () => {
   );
 };
 
-export default HeaderCom;
+export default Header;

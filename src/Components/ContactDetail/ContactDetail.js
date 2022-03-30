@@ -46,8 +46,8 @@ const ContactDetail = ({ onEdit }) => {
       <table className={style.table}>
         <thead>
           <tr>
-            <th className={style.th}>Detail</th>
-            <th className={style.th}>Description</th>
+            <th>Detail</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
