@@ -5,6 +5,12 @@
   list-style: none;
 }
 
+:root {
+  --primary-color: #1982c4;
+  --secondary-color: #0353a4;
+  --gray: #f1f1f1;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -33,5 +39,5 @@ input {
 }
 
 input:focus {
-  border: 2px solid #0284c7;
+  border: 2px solid var(--primary-color);
 }

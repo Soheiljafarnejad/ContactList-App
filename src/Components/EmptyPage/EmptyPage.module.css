@@ -1,35 +1,30 @@
-.notFound {
-  margin-top: 7rem;
-  width: 100%;
+.empty {
+  margin-top: 3rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.notFound img {
-  width: 100%;
-  max-width: 450px;
-  min-width: 200px;
-}
-
 .title {
-  width: 400px;
+  text-align: center;
   padding: 0 1rem;
-  min-width: 400px;
 }
 
 .title h2 {
-  font-size: 6rem;
-  line-height: 1;
+  font-size: 5rem;
 }
 
 .title p {
-  margin: 2.5rem 0;
+  font-size: 3rem;
+  margin-bottom:1rem ;
 }
 
 .title button {
+  font-size: 2rem;
   background-color: var(--primary-color);
   padding: 1rem 2.5rem;
+  margin-bottom: 2rem;
   font-weight: 700;
   color: white;
   border: none;

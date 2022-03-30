@@ -16,5 +16,5 @@
 }
 
 .activeLink {
-  color: #0284c7 !important;
+  color: var(--primary-color) !important;
 }

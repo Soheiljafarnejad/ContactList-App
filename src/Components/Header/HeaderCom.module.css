@@ -3,5 +3,5 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  box-shadow: 0 4px 2px -2px rgb(241, 241, 241);
+  box-shadow: 0 4px 2px -2px var(--gray);
 }
