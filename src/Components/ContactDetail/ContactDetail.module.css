@@ -1,7 +1,5 @@
-.contact {
-}
-
 .table {
+  margin: auto;
   width: 100%;
 }
 
@@ -28,6 +26,13 @@ tr:nth-child(2n) {
   justify-content: space-between;
 }
 
+.tdEdit span {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 70vw;
+}
+
 .tdEdit button {
   display: flex;
   align-items: center;
@@ -37,4 +42,16 @@ tr:nth-child(2n) {
   outline: none;
   cursor: pointer;
   font-size: 2rem;
+  margin-left: 1.5rem;
+}
+
+@media screen and (max-width: 576px) {
+  table,
+  th,
+  td {
+    padding: 1rem 0.5rem;
+  }
+  .tdEdit span {
+    width: 55vw;
+  }
 }

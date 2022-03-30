@@ -24,18 +24,6 @@ const ContactDetail = ({ onEdit }) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
 
-  const checkInput = (e) => {
-    if (
-      !(
-        (e.keyCode >= 48 && e.keyCode <= 57) ||
-        (e.keyCode >= 96 && e.keyCode <= 105) ||
-        e.keyCode === 8
-      )
-    ) {
-      e.preventDefault();
-    }
-  };
-
   const submitHandler = (e) => {
     e.preventDefault();
     const type = e.nativeEvent.submitter.name;
@@ -64,69 +52,34 @@ const ContactDetail = ({ onEdit }) => {
         </thead>
         <tbody>
           <tr>
-            <th>Name</th>
-            <td className={style.tdEdit}>
-              {edit === "name" ? (
-                <input
-                  name="name"
-                  type="text"
-                  value={value.name}
-                  onChange={changeHandler}
-                />
-              ) : (
-                contact.name
-              )}
-
-              <button name="name" type="submit">
-                {edit === "name" ? <p>OK</p> : <BiEdit />}
-              </button>
-            </td>
+            <EditName
+              edit={edit}
+              contact={contact}
+              value={value}
+              changeHandler={changeHandler}
+            />
           </tr>
 
           <tr>
-            <th>Email</th>
-            <td className={style.tdEdit}>
-              {edit === "email" ? (
-                <input
-                  type="email"
-                  name="email"
-                  value={value.email}
-                  onChange={changeHandler}
-                />
-              ) : (
-                contact.email || "-"
-              )}
-
-              <button name="email" type="submit">
-                {edit === "email" ? <p>OK</p> : <BiEdit />}
-              </button>
-            </td>
+            <EditEmail
+              edit={edit}
+              contact={contact}
+              value={value}
+              changeHandler={changeHandler}
+            />
           </tr>
 
           <tr>
-            <th>Phone</th>
-            <td className={style.tdEdit}>
-              {edit === "phone" ? (
-                <input
-                  name="phone"
-                  type="tel"
-                  value={value.phone}
-                  onChange={changeHandler}
-                  onKeyDown={checkInput}
-                  maxLength="11"
-                  minLength="11"
-                />
-              ) : (
-                contact.phone || "-"
-              )}
-              <button name="phone" type="submit">
-                {edit === "phone" ? <p>OK</p> : <BiEdit />}
-              </button>
-            </td>
+            <EditPhone
+              edit={edit}
+              contact={contact}
+              value={value}
+              changeHandler={changeHandler}
+            />
           </tr>
 
           <tr>
-            <th>Last Update</th>
+            <th>Update</th>
             <td>{dateFormat}</td>
           </tr>
         </tbody>
@@ -136,3 +89,89 @@ const ContactDetail = ({ onEdit }) => {
 };
 
 export default ContactDetail;
+
+const EditName = ({ edit, contact, value, changeHandler }) => {
+  return (
+    <>
+      <th>Name</th>
+      <td className={style.tdEdit}>
+        {edit === "name" ? (
+          <input
+            name="name"
+            type="text"
+            value={value.name}
+            onChange={changeHandler}
+          />
+        ) : (
+          <span>{contact.name}</span>
+        )}
+
+        <button name="name" type="submit">
+          {edit === "name" ? <p>OK</p> : <BiEdit />}
+        </button>
+      </td>
+    </>
+  );
+};
+
+const EditEmail = ({ edit, contact, value, changeHandler }) => {
+  return (
+    <>
+      <th>Email</th>
+      <td className={style.tdEdit}>
+        {edit === "email" ? (
+          <input
+            type="email"
+            name="email"
+            value={value.email}
+            onChange={changeHandler}
+          />
+        ) : (
+          <span>{contact.email || "-"}</span>
+        )}
+
+        <button name="email" type="submit">
+          {edit === "email" ? <p>OK</p> : <BiEdit />}
+        </button>
+      </td>
+    </>
+  );
+};
+
+const EditPhone = ({ edit, contact, value, changeHandler }) => {
+  const checkInput = (e) => {
+    if (
+      !(
+        (e.keyCode >= 48 && e.keyCode <= 57) ||
+        (e.keyCode >= 96 && e.keyCode <= 105) ||
+        e.keyCode === 8
+      )
+    ) {
+      e.preventDefault();
+    }
+  };
+
+  return (
+    <>
+      <th>Phone</th>
+      <td className={style.tdEdit}>
+        {edit === "phone" ? (
+          <input
+            name="phone"
+            type="tel"
+            value={value.phone}
+            onChange={changeHandler}
+            onKeyDown={checkInput}
+            maxLength="11"
+            minLength="11"
+          />
+        ) : (
+          <span>{contact.phone || "-"}</span>
+        )}
+        <button name="phone" type="submit">
+          {edit === "phone" ? <p>OK</p> : <BiEdit />}
+        </button>
+      </td>
+    </>
+  );
+};

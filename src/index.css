@@ -9,6 +9,7 @@
   --primary-color: #1982c4;
   --secondary-color: #0353a4;
   --gray: #f1f1f1;
+  --black: #383838;
 }
 
 html {
@@ -16,9 +17,21 @@ html {
 }
 
 body {
-  font-size: 2rem;
+  font-size: 2.3rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: var(--black);
 }
+
+h1 {
+  font-size: 2.8rem;
+}
+h2 {
+  font-size: 5.5rem;
+}
+h3 {
+  font-size: 3rem;
+}
+
 input,
 button {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -27,17 +40,34 @@ button {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--black);
+  transition: all 0.1s linear;
 }
 
 input {
+  width: 100%;
   padding: 0.5rem;
   outline: none;
-  border: 2px solid rgb(241, 241, 241);
+  border: 2px solid var(--gray);
   border-radius: 3px;
   transition: all 0.2s linear;
 }
 
 input:focus {
   border: 2px solid var(--primary-color);
+}
+
+@media screen and (max-width: 576px) {
+  body {
+    font-size: 1.8rem;
+  }
+  h1 {
+    font-size: 2.8rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
 }

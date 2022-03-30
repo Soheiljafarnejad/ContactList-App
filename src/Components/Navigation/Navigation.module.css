@@ -2,16 +2,13 @@
   width: 100%;
   display: flex;
   align-items: center;
-  font-size: 3rem;
-  font-weight: 700;
 }
 
 .navigation ul li:not(:last-child) {
-  margin-right: 3rem;
+  margin-right: 2.5rem;
 }
 
 .navigation a {
-  color: rgb(56, 56, 56);
   text-decoration: none;
 }
 

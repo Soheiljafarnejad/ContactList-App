@@ -16,7 +16,7 @@ const Navigation = () => {
                 className={(e) => `${e.isActive ? `${style.activeLink}` : ""}`}
                 to={item.to}
               >
-                {item.title}
+                <h3>{item.title}</h3>
               </NavLink>
             </li>
           );

@@ -7,7 +7,7 @@ const ContactList = ({ contact, onDelete }) => {
   }
   return (
     <section className={`container ${style.contactList}`}>
-      <h2>Contact List</h2>
+      <h3>Contact List</h3>
       {contact.map((item) => {
         return (
           <Contact

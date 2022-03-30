@@ -8,7 +8,7 @@ const Contact = ({ contact, onDelete }) => {
   return (
     <div className={style.contact}>
       <Link state={contact} to={`/contact/${id}`}>
-        <div className={style.description}>
+        <div className={style.user}>
           <img src={contactImg} alt="contact-img" />
           <div className={style.title}>
             <h4>{name}</h4>

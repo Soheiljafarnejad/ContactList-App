@@ -8,18 +8,17 @@
 
 .notFound img {
   width: 100%;
-  max-width: 450px;
+  max-width: 400px;
   min-width: 200px;
 }
 
 .title {
   width: 400px;
   padding: 0 1rem;
-  min-width: 400px;
+  min-width: 350px;
 }
 
 .title h2 {
-  font-size: 6rem;
   line-height: 1;
 }
 
@@ -44,15 +43,25 @@
 }
 
 @media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 576px) {
+  .title {
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+    padding: 1.5rem;
+  }
   .notFound img {
     display: none;
   }
-  .title {
-    text-align: center;
-    min-width: 300px;
-    padding: 1rem;
+  .title p {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
   }
-  .title h2 {
-    font-size: 4rem;
+  .title button {
+    padding: 0.75rem 1.5rem;
   }
+
 }
