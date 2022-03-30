@@ -5,6 +5,7 @@ import HeaderCom from "./Components/Header/HeaderCom";
 import ContactList from "./Components/ContactList/ContactList";
 import "./App.css";
 import ContactDetail from "./Components/ContactDetail/ContactDetail";
+import NotFound from "./Components/NotFound/NotFound";
 
 const App = () => {
   const [contact, setContact] = useState([]);
@@ -56,6 +57,7 @@ const App = () => {
             path="/contact/:id"
             element={<ContactDetail onEdit={editHandler} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

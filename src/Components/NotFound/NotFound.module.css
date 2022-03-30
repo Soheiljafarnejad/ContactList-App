@@ -1,0 +1,58 @@
+.notFound {
+  margin-top: 7rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFound img {
+  width: 100%;
+  max-width: 450px;
+  min-width: 200px;
+}
+
+.title {
+  width: 400px;
+  padding: 0 1rem;
+  min-width: 400px;
+}
+
+.title h2 {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.title p {
+  margin: 2.5rem 0;
+}
+
+.title button {
+  background-color: #0284c7;
+  padding: 1rem 2.5rem;
+  font-weight: 700;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.title button:hover {
+  background-color: #075985;
+}
+
+@media screen and (max-width: 768px) {
+  .notFound img {
+    display: none;
+  }
+  .title {
+    text-align: center;
+    min-width: 300px;
+    padding: 1rem;
+  }
+  .title h2 {
+    font-size: 4rem;
+  }
+}
