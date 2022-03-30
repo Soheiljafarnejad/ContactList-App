@@ -1,3 +1,7 @@
+.contact h3 {
+  margin: 1.5rem 0;
+}
+
 .table {
   margin: auto;
   width: 100%;
@@ -20,7 +24,7 @@ tr:nth-child(2n) {
   background-color: #f8f9fa;
 }
 
-.tdEdit {
+.tdEdit form {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -43,6 +47,19 @@ tr:nth-child(2n) {
   cursor: pointer;
   font-size: 2rem;
   margin-left: 1.5rem;
+}
+
+.tdEdit button p {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tdEdit button p:hover {
+  background-color: var(--secondary-color);
 }
 
 @media screen and (max-width: 576px) {

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import FormContact from "./Components/FormContact/FormContact";
 import ContactList from "./Components/ContactList/ContactList";
 import "./App.css";
@@ -63,6 +64,7 @@ const App = () => {
           </Routes>
         </Layout>
       </BrowserRouter>
+      <Toaster />
     </>
   );
 };

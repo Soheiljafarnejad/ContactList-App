@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import style from "./ContactDetail.module.css";
 import { BiEdit } from "react-icons/bi";
+import toast from "react-hot-toast";
 import { useState } from "react";
 
 const ContactDetail = ({ onEdit }) => {
@@ -31,9 +32,11 @@ const ContactDetail = ({ onEdit }) => {
     setEdit(type);
     if (e.nativeEvent.submitter.innerText) {
       if (!value.name) {
-        alert("please enter name");
+        toast.error("Please Enter Name");
         return;
       }
+
+      toast.success("Updated");
       onEdit(id, type, value);
       setEdit("");
       history("/");
@@ -42,12 +45,13 @@ const ContactDetail = ({ onEdit }) => {
   };
 
   return (
-    <form className={`container ${style.contact}`} onSubmit={submitHandler}>
+    <section className={`container ${style.contact}`}>
+      <h3>Contacts Detail</h3>
       <table className={style.table}>
         <thead>
           <tr>
+            <th>Contact</th>
             <th>Detail</th>
-            <th>Description</th>
           </tr>
         </thead>
         <tbody>
@@ -57,6 +61,7 @@ const ContactDetail = ({ onEdit }) => {
               contact={contact}
               value={value}
               changeHandler={changeHandler}
+              submitHandler={submitHandler}
             />
           </tr>
 
@@ -66,6 +71,7 @@ const ContactDetail = ({ onEdit }) => {
               contact={contact}
               value={value}
               changeHandler={changeHandler}
+              submitHandler={submitHandler}
             />
           </tr>
 
@@ -75,6 +81,7 @@ const ContactDetail = ({ onEdit }) => {
               contact={contact}
               value={value}
               changeHandler={changeHandler}
+              submitHandler={submitHandler}
             />
           </tr>
 
@@ -84,69 +91,81 @@ const ContactDetail = ({ onEdit }) => {
           </tr>
         </tbody>
       </table>
-    </form>
+    </section>
   );
 };
 
 export default ContactDetail;
 
-const EditName = ({ edit, contact, value, changeHandler }) => {
+const EditName = ({ edit, contact, value, changeHandler, submitHandler }) => {
   return (
     <>
       <th>Name</th>
       <td className={style.tdEdit}>
-        {edit === "name" ? (
-          <input
-            name="name"
-            type="text"
-            value={value.name}
-            onChange={changeHandler}
-          />
-        ) : (
-          <span>{contact.name}</span>
-        )}
+        <form onSubmit={submitHandler}>
+          {edit === "name" ? (
+            <input
+              name="name"
+              type="text"
+              value={value.name}
+              onChange={changeHandler}
+              autocomplete="off"
+              autoFocus="true"
+            />
+          ) : (
+            <span>{contact.name}</span>
+          )}
 
-        <button name="name" type="submit">
-          {edit === "name" ? <p>OK</p> : <BiEdit />}
-        </button>
+          <button name="name" type="submit">
+            {edit === "name" ? <p>Save</p> : <BiEdit />}
+          </button>
+        </form>
       </td>
     </>
   );
 };
 
-const EditEmail = ({ edit, contact, value, changeHandler }) => {
+const EditEmail = ({ edit, contact, value, changeHandler, submitHandler }) => {
   return (
     <>
       <th>Email</th>
       <td className={style.tdEdit}>
-        {edit === "email" ? (
-          <input
-            type="email"
-            name="email"
-            value={value.email}
-            onChange={changeHandler}
-          />
-        ) : (
-          <span>{contact.email || "-"}</span>
-        )}
+        <form form onSubmit={submitHandler}>
+          {edit === "email" ? (
+            <input
+              type="email"
+              name="email"
+              value={value.email}
+              onChange={changeHandler}
+              autocomplete="off"
+              autoFocus="true"
+            />
+          ) : (
+            <span>
+              <a href={`mailto:${contact.email}`}>{contact.email || "-"}</a>
+            </span>
+          )}
 
-        <button name="email" type="submit">
-          {edit === "email" ? <p>OK</p> : <BiEdit />}
-        </button>
+          <button name="email" type="submit">
+            {edit === "email" ? <p>Save</p> : <BiEdit />}
+          </button>
+        </form>
       </td>
     </>
   );
 };
 
-const EditPhone = ({ edit, contact, value, changeHandler }) => {
+const EditPhone = ({ edit, contact, value, changeHandler, submitHandler }) => {
   const checkInput = (e) => {
     if (
       !(
         (e.keyCode >= 48 && e.keyCode <= 57) ||
         (e.keyCode >= 96 && e.keyCode <= 105) ||
-        e.keyCode === 8
+        e.keyCode === 8 ||
+        e.keyCode === 13
       )
     ) {
+      toast.error("Enter Number");
       e.preventDefault();
     }
   };
@@ -155,22 +174,26 @@ const EditPhone = ({ edit, contact, value, changeHandler }) => {
     <>
       <th>Phone</th>
       <td className={style.tdEdit}>
-        {edit === "phone" ? (
-          <input
-            name="phone"
-            type="tel"
-            value={value.phone}
-            onChange={changeHandler}
-            onKeyDown={checkInput}
-            maxLength="11"
-            minLength="11"
-          />
-        ) : (
-          <span>{contact.phone || "-"}</span>
-        )}
-        <button name="phone" type="submit">
-          {edit === "phone" ? <p>OK</p> : <BiEdit />}
-        </button>
+        <form onSubmit={submitHandler}>
+          {edit === "phone" ? (
+            <input
+              name="phone"
+              type="tel"
+              value={value.phone}
+              onChange={changeHandler}
+              onKeyDown={checkInput}
+              maxLength="11"
+              minLength="11"
+              autocomplete="off"
+              autoFocus="true"
+            />
+          ) : (
+            <a href={`tel:${contact.phone}`}>{contact.phone || "-"}</a>
+          )}
+          <button name="phone" type="submit">
+            {edit === "phone" ? <p>Save</p> : <BiEdit />}
+          </button>
+        </form>
       </td>
     </>
   );

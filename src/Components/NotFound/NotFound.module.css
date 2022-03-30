@@ -42,10 +42,6 @@
   background-color: var(--secondary-color);
 }
 
-@media screen and (max-width: 768px) {
-
-}
-
 @media screen and (max-width: 576px) {
   .title {
     width: 100%;

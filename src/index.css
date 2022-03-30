@@ -6,7 +6,7 @@
 }
 
 :root {
-  --primary-color: #1982c4;
+  --primary-color: #1a6ae0;
   --secondary-color: #0353a4;
   --gray: #f1f1f1;
   --black: #383838;
@@ -20,6 +20,11 @@ body {
   font-size: 2.1rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: var(--black);
+  ser-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 h1 {
