@@ -2,8 +2,9 @@ import FormContact from "../../Common/FormContact/FormContact";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
+import { putRequest } from "../../services/httpService";
 
-const EditContact = ({ onEdit }) => {
+const EditContact = () => {
   const history = useNavigate();
   const location = useLocation();
   const contact = location.state;
@@ -15,14 +16,25 @@ const EditContact = ({ onEdit }) => {
       history("/");
       return;
     }
-
-    toast.success("Updated");
-    onEdit(value);
-    history("/");
+    editHandler(value);
   };
 
   const changeHandler = (e) => {
-    setValue({ ...value, [e.target.id]: e.target.value });
+    setValue({
+      ...value,
+      [e.target.id]: e.target.value,
+      date: new Date().toISOString(),
+    });
+  };
+
+  const editHandler = async (value) => {
+    try {
+      await putRequest(value.id, value);
+      toast.success("Updated");
+      history("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

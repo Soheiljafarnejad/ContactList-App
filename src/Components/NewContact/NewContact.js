@@ -2,8 +2,9 @@ import FormContact from "../../Common/FormContact/FormContact";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { postRequest } from "../../services/httpService";
 
-const NewContact = ({ addContactHandler }) => {
+const NewContact = () => {
   const [value, setValue] = useState({
     name: "",
     email: "",
@@ -14,14 +15,23 @@ const NewContact = ({ addContactHandler }) => {
     setValue({
       ...value,
       [e.target.id]: e.target.value,
+      date: new Date().toISOString(),
     });
   };
 
   const onSubmit = () => {
-    toast.success("Successful");
     addContactHandler(value);
+  };
+
+  const addContactHandler = async (value) => {
+    try {
+      await postRequest(value);
+      toast.success("Successful");
+      history("/");
+    } catch (error) {
+      console.log(error);
+    }
     setValue({ name: "", email: "", phone: "" });
-    history("/");
   };
 
   return (
