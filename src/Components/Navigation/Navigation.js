@@ -9,13 +9,9 @@ const Navigation = () => {
     { to: "/about-me", title: "About me" },
   ];
 
-  const clickHandler = () => {
-    setToggle(!toggle);
-  };
-
   return (
     <section className={`${toggle ? style.toggle : ""}`}>
-      <button onClick={clickHandler} className={style.menu}>
+      <button onClick={() => setToggle(!toggle)} className={style.menu}>
         <div className={style.one}></div>
         <div className={style.two}></div>
         <div className={style.there}></div>

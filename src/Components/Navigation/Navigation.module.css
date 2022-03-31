@@ -32,8 +32,9 @@
   background-color: var(--black);
   width: 27px;
   height: 3px;
-  margin: 4px 0;
+  margin: 5px 0;
   transition: all 0.2s linear;
+  border-radius: 30px;
 }
 
 @media screen and (max-width: 576px) {
@@ -43,15 +44,18 @@
   .toggle ul {
     position: absolute;
     display: block;
-    margin: 1rem 0;
+   margin-top: 1.8rem;
     z-index: 999;
     right: 0;
-    padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+    padding: 0rem 1.5rem 1rem 1.5rem;
+    border: 1px solid var(--gray);
+    border-left: 0;
+    border-right: 0;
   }
   .toggle ul li {
     display: block;
-    margin: 1rem 0 !important;
-    box-shadow: 0 4px 2px -2px var(--gray);
+    margin-right: 0 !important;
+    margin-top: 1rem;
   }
   .toggle .menu {
     position: relative;
