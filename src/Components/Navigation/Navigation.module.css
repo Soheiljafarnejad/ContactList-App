@@ -47,15 +47,14 @@
     margin-top: 1.8rem;
     z-index: 999;
     right: 0;
-    padding: 0rem 1.5rem 1rem 1.5rem;
-    border: 1px solid var(--gray);
+    padding: 0rem 1.5rem;
     border-left: 0;
     border-right: 0;
   }
   .toggle ul li {
     display: block;
     margin-right: 0 !important;
-    margin-top: 1.5rem;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--gray);
   }
   .toggle .menu {
