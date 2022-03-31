@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import ContactList from "./Components/ContactList/ContactList";
-import "./App.css";
 import ContactDetail from "./Components/ContactDetail/ContactDetail";
 import NotFound from "./Components/NotFound/NotFound";
 import Layout from "./Components/Layout";
 import NewContact from "./Components/NewContact/NewContact";
 import EditContact from "./Components/EditContact/EditContact";
+import "./App.css";
+import axios from "axios";
 
 const App = () => {
   const [contact, setContact] = useState([]);
@@ -36,8 +37,14 @@ const App = () => {
   };
 
   useEffect(() => {
-    const allContact = JSON.parse(localStorage.getItem("contact"));
-    if (allContact) setContact(allContact);
+    axios
+      .get("http://localhost:3001/contacts")
+      .then((response) => {
+        setContact(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   useEffect(() => {
