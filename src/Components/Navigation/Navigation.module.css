@@ -1,6 +1,11 @@
+.navigation {
+  overflow: hidden;
+}
 .navigation ul {
-  width: 100%;
+  overflow: hidden;
+  background-color: white;
   display: flex;
+  width: 100%;
   align-items: center;
 }
 
@@ -14,4 +19,57 @@
 
 .activeLink {
   color: var(--primary-color) !important;
+}
+
+.menu {
+  display: none;
+  background-color: #0000;
+  border: none;
+  outline: none;
+}
+
+.menu div {
+  background-color: var(--black);
+  width: 27px;
+  height: 3px;
+  margin: 4px 0;
+  transition: all 0.2s linear;
+}
+
+@media screen and (max-width: 576px) {
+  .navigation ul {
+    display: none;
+  }
+  .toggle ul {
+    position: absolute;
+    display: block;
+    margin: 1rem 0;
+    z-index: 999;
+    right: 0;
+    padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+  }
+  .toggle ul li {
+    display: block;
+    margin: 1rem 0 !important;
+    box-shadow: 0 4px 2px -2px var(--gray);
+  }
+  .toggle .menu {
+    position: relative;
+  }
+  .toggle .menu .one {
+    position: absolute;
+    transform: rotate(45deg);
+  }
+  .toggle .menu .two {
+    opacity: 0;
+  }
+  .toggle .menu .there {
+    position: absolute;
+    transform: rotate(-45deg);
+    top: 0px;
+  }
+  .menu {
+    position: relative;
+    display: block;
+  }
 }
