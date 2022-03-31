@@ -44,7 +44,7 @@
   .toggle ul {
     position: absolute;
     display: block;
-   margin-top: 1.8rem;
+    margin-top: 1.8rem;
     z-index: 999;
     right: 0;
     padding: 0rem 1.5rem 1rem 1.5rem;
@@ -55,7 +55,8 @@
   .toggle ul li {
     display: block;
     margin-right: 0 !important;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
+    border-bottom: 1px solid var(--gray);
   }
   .toggle .menu {
     position: relative;

@@ -8,7 +8,6 @@ import NotFound from "./Components/NotFound/NotFound";
 import Layout from "./Components/Layout";
 import NewContact from "./Components/NewContact/NewContact";
 import EditContact from "./Components/EditContact/EditContact";
-import AboutMe from "./Components/AboutMe/AboutMe";
 
 const App = () => {
   const [contact, setContact] = useState([]);
@@ -65,7 +64,6 @@ const App = () => {
               path="/contact/edit/:id"
               element={<EditContact onEdit={editHandler} />}
             />
-            <Route path="/about-me" element={<AboutMe />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>
