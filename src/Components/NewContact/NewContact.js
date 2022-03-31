@@ -1,10 +1,9 @@
+import FormContact from "../../Common/FormContact/FormContact";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import FormContact from "../FormContact/FormContact";
 
 const NewContact = ({ addContactHandler }) => {
-    
   const [value, setValue] = useState({
     name: "",
     email: "",

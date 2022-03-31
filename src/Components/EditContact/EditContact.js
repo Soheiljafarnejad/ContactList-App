@@ -1,4 +1,4 @@
-import FormContact from "../FormContact/FormContact";
+import FormContact from "../../Common/FormContact/FormContact";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";

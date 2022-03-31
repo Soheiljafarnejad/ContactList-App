@@ -26,6 +26,16 @@
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: var(--primary-color) 0 0 0 0;
+  }
+  80% {
+    box-shadow: #1a6ae000 0 0 0 9px;
+  }
 }
 
 .title button:hover {
@@ -36,7 +46,7 @@
   .title button {
     padding: 0.75rem 1.5rem;
   }
-  .empty img{
+  .empty img {
     width: 100%;
     max-width: 200px;
   }
