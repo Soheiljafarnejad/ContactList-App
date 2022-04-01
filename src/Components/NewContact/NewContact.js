@@ -24,14 +24,19 @@ const NewContact = () => {
   };
 
   const addContactHandler = async (value) => {
+    const toastId = toast.loading("Loading...");
     try {
       await postRequest(value);
-      toast.success("Successful");
+      toast.success("Successful", {
+        id: toastId,
+      });
+      setValue({ name: "", email: "", phone: "" });
       history("/");
     } catch (error) {
-      console.log(error);
+      toast.error(`${error.toString()}`, {
+        id: toastId,
+      });
     }
-    setValue({ name: "", email: "", phone: "" });
   };
 
   return (

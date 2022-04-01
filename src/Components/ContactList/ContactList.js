@@ -3,13 +3,14 @@ import { deleteRequest, getRequest } from "../../services/httpService";
 import Contact from "../Contact/Contact";
 import EmptyPage from "../EmptyPage/EmptyPage";
 import style from "./ContactList.module.css";
+import toast from "react-hot-toast";
 const ContactList = () => {
   const [contact, setContact] = useState([]);
 
   useEffect(() => {
     getRequest()
       .then((response) => setContact(response.data))
-      .catch((error) => console.log(error));
+      .catch((error) => toast.error(`${error.toString()}`));
   }, []);
 
   const deleteHandler = async (id) => {
@@ -17,7 +18,7 @@ const ContactList = () => {
       await deleteRequest(id);
       getRequest()
         .then((response) => setContact(response.data))
-        .catch((error) => console.log(error));
+        .catch((error) => toast.error(`${error.toString()}`));
     } catch (error) {
       console.log(error);
     }

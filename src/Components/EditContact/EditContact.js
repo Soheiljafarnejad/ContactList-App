@@ -28,12 +28,17 @@ const EditContact = () => {
   };
 
   const editHandler = async (value) => {
+    const toastId = toast.loading("Loading...");
     try {
       await putRequest(value.id, value);
-      toast.success("Updated");
+      toast.success("Updated", {
+        id: toastId,
+      });
       history("/");
     } catch (error) {
-      console.log(error);
+      toast.error(`${error.toString()}`, {
+        id: toastId,
+      });
     }
   };
 
