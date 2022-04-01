@@ -24,21 +24,41 @@ const ContactList = () => {
     }
   };
 
-  if (contact.length === 0) {
-    return <EmptyPage />;
-  }
+  const searchHandler = (e) => {
+    getRequest()
+      .then((response) => {
+        const filtered = response.data.filter((item) => {
+          return Object.values(item)
+            .splice(0, 3)
+            .join(" ")
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase());
+        });
+        setContact(filtered);
+      })
+      .catch((error) => toast.error(`${error.toString()}`));
+  };
+
   return (
     <section className={`container ${style.contactList}`}>
-      <h3>Contact List</h3>
-      {contact.map((item) => {
-        return (
-          <Contact
-            contact={item}
-            key={item.id}
-            onDelete={() => deleteHandler(item.id)}
-          />
-        );
-      })}
+      <div className={style.contactHeader}>
+        <h3>Contact List</h3>
+        <input type="text" placeholder="Search..." onChange={searchHandler} />
+      </div>
+
+      {contact.length === 0 ? (
+        <EmptyPage />
+      ) : (
+        contact.map((item) => {
+          return (
+            <Contact
+              contact={item}
+              key={item.id}
+              onDelete={() => deleteHandler(item.id)}
+            />
+          );
+        })
+      )}
     </section>
   );
 };

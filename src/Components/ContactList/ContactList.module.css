@@ -1,4 +1,18 @@
 .contactList h3 {
   text-align: center;
+  min-width: 110px;
+}
+
+.contactHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 1rem;
+}
+
+.contactHeader input{
+  flex-grow: 1;
+  max-width: 400px;
+  padding: 0.3rem 0.5rem;
+  margin-left: 0.5rem;
 }
