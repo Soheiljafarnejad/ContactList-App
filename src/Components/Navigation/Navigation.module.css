@@ -44,13 +44,17 @@
   .toggle ul {
     position: absolute;
     display: block;
-    margin-top: 1.8rem;
+    margin-top: 5rem;
     z-index: 999;
     right: 0;
+    top: 0;
     padding: 0rem 1.5rem;
     border-left: 0;
     border-right: 0;
+    border-top: 1px solid var(--gray);
+    min-height: 100vh;
   }
+
   .toggle ul li {
     display: block;
     margin-right: 0 !important;
