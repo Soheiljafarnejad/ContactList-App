@@ -1,8 +1,17 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+align-items: start;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   padding-bottom: 1rem;
+  width: 100%;
+  max-width: 700px;
 }
+
 .form label {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;

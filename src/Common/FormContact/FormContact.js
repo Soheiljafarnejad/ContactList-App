@@ -39,7 +39,7 @@ const FormContact = ({ edit, changeHandler, value, onSubmit }) => {
   }, []);
 
   return (
-    <section className="container">
+    <section className={`container ${style.formContainer}`}>
       <h3>{edit ? "Edit" : "Add"} Contact</h3>
 
       <form className={style.form} onSubmit={submitHandler}>
